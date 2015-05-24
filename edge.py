@@ -14,9 +14,14 @@ class Edge:
     def setOrigin(self, vertex):
         self.origin = vertex
         if self.directed:
-            vertex.incOut()
+            vertex.outDegree += 1
 
     def setDestination(self, vertex):
         self.destination = vertex
         if self.directed:
-            vertex.incIn()
+            vertex.inDegree += 1
+
+    def getIncidentVertexPair(self):
+        if self.origin is not None and self.destination is not None:
+            return (self.origin.label , self.destination.label)
+        return None
