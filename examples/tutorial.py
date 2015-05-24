@@ -1,6 +1,11 @@
 # this is a tutorial script to show you how you can use the tools to generate graphs, process them with algorithms
 # and output the rendered results to a folder of your choice
 
+# give the interpreter the path to the modules
+import sys
+from os.path import dirname
+sys.path.append(dirname(dirname(__file__)))
+
 # first import the definitions and classes you'll be using
 from algorithms.kruskal import *
 
@@ -24,6 +29,8 @@ g.addEdge('ORD','BWI',weight=621)
 g.addEdge('ORD','JFK',weight=740)
 g.addEdge('ORD','PVD',weight=849)
 g.addEdge('ORD','BOS',weight=867)
+
+g.render('full')
 
 # run the kruskal minimum spanning tree algorithm
 KruskalMST(g)
