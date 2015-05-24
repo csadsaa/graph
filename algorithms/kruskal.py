@@ -1,9 +1,8 @@
 from graph.graph import Graph
-from Lib.queue import PriorityQueue
 
 def KruskalMST(g):
     c = []  # empty set of clusters
-    for v in g.vertices():
+    for v in g.vertices:
         c.append(Graph(v))
     q = sorted(g.edges, reverse=True) # use the edge weights as keys
     T = Graph() # empty tree

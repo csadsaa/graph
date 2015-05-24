@@ -48,7 +48,7 @@ class Graph:
     # return a graph that is the union of this graph and another one
     def getUnion(self, other):
         newOne = Graph(self.vertices.copy(), self.label) # copy self vertices
-        newOne.vertices.update(other) # add other vertices
+        newOne.vertices.update(other.vertices) # add other vertices
         newOne.edges = list(set(self.edges + other.edges)) # get the unique edges
         return newOne
 
@@ -61,11 +61,11 @@ class Graph:
             if e.weight == 0:
                 dot.edge(e.origin.label, e.destination.label, label=e.label)
             else:
-                dot.edge(e.origin.label, e.destination.label, label=e.weight)
+                dot.edge(e.origin.label, e.destination.label, label=str(e.weight))
         # in the case of there being no edges but some vertices, render the vertices
         if len(self.edges) == 0 and len(self.vertices) > 0:
             for key, value in self.vertices.items():
                 dot.node(key, label=value.label)
         if not filename:
             filename = self.label
-        dot.render('../test-output/' + filename + '.gv', view=True)
+        dot.render('../test-output/' + str(filename) + '.gv', view=True)
