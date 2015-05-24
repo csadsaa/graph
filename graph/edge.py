@@ -5,11 +5,27 @@ class Edge:
         self.destination = None
         self.label = ""
         self.weight = 0
-        if kwargs["directed"]:
-            self.directed = True
+        if "directed" in kwargs:
+            self.directed = kwargs["directed"]
+        if "label" in kwargs:
+            self.label = kwargs["label"]
+        if "weight" in kwargs:
+            self.weight = kwargs["weight"]
         # expecting vertices as arguments
         self.setOrigin(orig)
         self.setDestination(dest)
+
+    def __eq__(self, other):
+        return self.weight == other.weight
+
+    def __lt__(self, other):
+        return self.weight < other.weight
+
+    def __repr__(self):
+        return '{}: {} --{}--> {}'.format(self.__class__.__name__,
+                                          self.origin.label,
+                                          self.weight,
+                                          self.destination.label)
 
     def setOrigin(self, vertex):
         self.origin = vertex
