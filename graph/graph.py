@@ -54,9 +54,9 @@ class Graph:
 
     def render(self, filename=None):
         if not self.directed:
-            dot = graphviz.Graph(name=self.label, engine='neato', format='png')
+            dot = graphviz.Graph(name=self.label, engine='dot', format='png')
         else:
-            dot = graphviz.Digraph(name=self.label, engine='neato', format='png')
+            dot = graphviz.Digraph(name=self.label, engine='dot', format='png')
         for e in self.edges:
             if e.weight == 0:
                 dot.edge(e.origin.label, e.destination.label, label=e.label)
@@ -68,4 +68,4 @@ class Graph:
                 dot.node(key, label=value.label)
         if not filename:
             filename = self.label
-        dot.render('../test-output/' + str(filename) + '.gv', view=True)
+        dot.render('./test-output/' + str(filename) + '.gv', view=True)

@@ -19,7 +19,7 @@ def KruskalMST(g):
                 c.remove(origGraph)
                 c.remove(destGraph)
                 c.append(origGraph.getUnion(destGraph))
-        T.render(counter)
+        T.render('Step {}'.format(counter))
     return T
 
 # takes an enumerable of graphs and a vertex
